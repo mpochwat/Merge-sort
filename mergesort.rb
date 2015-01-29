@@ -7,20 +7,10 @@ def merge_sort(arr)
 end
 
 def merge(a, b, sorted=[])
-	while !a.empty? || !b.empty?
-		if a.empty?
-			sorted.concat(b)
-			b.clear
-		elsif b.empty?
-			sorted.concat(a)
-			a.clear
-		elsif a[0] < b[0]
-			sorted << a.shift
-		else
-			sorted << b.shift
-		end
+	while !a.empty? && !b.empty?
+		sorted << ( a[0] < b[0] ? a.shift : b.shift )
 	end	
-	sorted
+	sorted.concat(a).concat(b)
 end
 
 p merge_sort([1])
